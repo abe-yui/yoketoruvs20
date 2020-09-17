@@ -90,6 +90,21 @@ namespace yoketoruvs20
                     nextState = State.Clear;
                 }
             }
+
+            if(currentState==State.Game)
+            {
+                UpdateGame();
+            }
+        }
+
+        void UpdateGame()
+        {
+            Point mp = PointToClient(MousePosition);
+            //mp = PleyerText.Width / 2;
+            //label2.Left = mp.X - label2.Width / 2;
+            //label2.Top = mp.Y - label2.Height / 2;
+
+
         }
 
         void initProc()
@@ -114,6 +129,14 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyrightLabel.Visible = false;
                     hiLabel.Visible = false;
+                    
+
+                    for(int i=EnemyIndex;i<ChrMax;i++)
+                    {
+                        chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                        chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                    }
+
                     break;
 
                 case State.GameOver:
