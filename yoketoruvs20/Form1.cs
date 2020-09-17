@@ -8,10 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Runtime.InteropServices;
+
 namespace yoketoruvs20
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form        
     {
+
+        const bool isDebug = true;
+        
+        [DllImport("user32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
+
+
         enum State
         {
             None = -1,      //無効
@@ -34,6 +43,18 @@ namespace yoketoruvs20
             {
                 initProc();
             }
+
+            if (isDebug)
+            {
+                if (GetAsyncKeyState((int)Keys.O)<0)            //O=Game"O"ver
+                {
+                    nextState = State.GameOver;
+                }
+                else if (GetAsyncKeyState((int)Keys.C)<0)       //C="C"lear
+                {
+                    nextState = State.Clear;
+                }
+            }
         }
 
         void initProc()
@@ -50,7 +71,7 @@ namespace yoketoruvs20
                     hiLabel.Visible = true;
                     gameOverLabel.Visible = false;
                     titleButton.Visible = false;
-                    ClearLabel.Visible = false;
+                    clearLabel.Visible = false;
                     break;
 
                 case State.Game:
@@ -59,12 +80,28 @@ namespace yoketoruvs20
                     copyrightLabel.Visible = false;
                     hiLabel.Visible = false;
                     break;
+
+                case State.GameOver:
+                    gameOverLabel.Visible = true;
+                    titleButton.Visible = true;
+                    break;
+
+                case State.Clear:
+                    clearLabel.Visible = true;
+                    titleButton.Visible = true;
+                    hiLabel.Visible = true;
+                    break;
             }
         }
 
         private void startButton_Click(object sender, EventArgs e)
         {
             nextState = State.Game;
+        }
+
+        private void titleButton_Click(object sender, EventArgs e)
+        {
+            nextState = State.Title;
         }
     }
 }

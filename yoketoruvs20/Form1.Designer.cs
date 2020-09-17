@@ -36,7 +36,7 @@
             this.itemLabel = new System.Windows.Forms.Label();
             this.hiLabel = new System.Windows.Forms.Label();
             this.gameOverLabel = new System.Windows.Forms.Label();
-            this.ClearLabel = new System.Windows.Forms.Label();
+            this.clearLabel = new System.Windows.Forms.Label();
             this.titleButton = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -111,34 +111,35 @@
             this.gameOverLabel.AutoSize = true;
             this.gameOverLabel.Font = new System.Drawing.Font("MS UI Gothic", 65F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.BlueViolet;
-            this.gameOverLabel.Location = new System.Drawing.Point(190, 186);
+            this.gameOverLabel.Location = new System.Drawing.Point(201, 131);
             this.gameOverLabel.Name = "gameOverLabel";
             this.gameOverLabel.Size = new System.Drawing.Size(422, 87);
             this.gameOverLabel.TabIndex = 6;
             this.gameOverLabel.Text = "GameOver";
             // 
-            // ClearLabel
+            // clearLabel
             // 
-            this.ClearLabel.AutoSize = true;
-            this.ClearLabel.Font = new System.Drawing.Font("MS UI Gothic", 70F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.ClearLabel.ForeColor = System.Drawing.Color.MediumSeaGreen;
-            this.ClearLabel.Location = new System.Drawing.Point(243, 181);
-            this.ClearLabel.Name = "ClearLabel";
-            this.ClearLabel.Size = new System.Drawing.Size(324, 94);
-            this.ClearLabel.TabIndex = 7;
-            this.ClearLabel.Text = "CLEAR";
+            this.clearLabel.AutoSize = true;
+            this.clearLabel.Font = new System.Drawing.Font("MS UI Gothic", 70F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.clearLabel.ForeColor = System.Drawing.Color.MediumSeaGreen;
+            this.clearLabel.Location = new System.Drawing.Point(243, 88);
+            this.clearLabel.Name = "clearLabel";
+            this.clearLabel.Size = new System.Drawing.Size(324, 94);
+            this.clearLabel.TabIndex = 7;
+            this.clearLabel.Text = "CLEAR";
             // 
             // titleButton
             // 
             this.titleButton.BackColor = System.Drawing.Color.SpringGreen;
-            this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.titleButton.ForeColor = System.Drawing.Color.Green;
-            this.titleButton.Location = new System.Drawing.Point(263, 281);
+            this.titleButton.Location = new System.Drawing.Point(259, 278);
             this.titleButton.Name = "titleButton";
             this.titleButton.Size = new System.Drawing.Size(272, 98);
             this.titleButton.TabIndex = 8;
-            this.titleButton.Text = "タイトルへ";
+            this.titleButton.Text = "❁タイトルへ❁";
             this.titleButton.UseVisualStyleBackColor = false;
+            this.titleButton.Click += new System.EventHandler(this.titleButton_Click);
             // 
             // timer1
             // 
@@ -151,7 +152,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.titleButton);
-            this.Controls.Add(this.ClearLabel);
+            this.Controls.Add(this.clearLabel);
             this.Controls.Add(this.gameOverLabel);
             this.Controls.Add(this.hiLabel);
             this.Controls.Add(this.itemLabel);
@@ -175,7 +176,7 @@
         private System.Windows.Forms.Label itemLabel;
         private System.Windows.Forms.Label hiLabel;
         private System.Windows.Forms.Label gameOverLabel;
-        private System.Windows.Forms.Label ClearLabel;
+        private System.Windows.Forms.Label clearLabel;
         private System.Windows.Forms.Button titleButton;
         private System.Windows.Forms.Timer timer1;
     }
