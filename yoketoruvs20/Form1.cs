@@ -100,9 +100,8 @@ namespace yoketoruvs20
         void UpdateGame()
         {
             Point mp = PointToClient(MousePosition);
-            //mp = PleyerText.Width / 2;
-            //label2.Left = mp.X - label2.Width / 2;
-            //label2.Top = mp.Y - label2.Height / 2;
+            //PlayerText.Left = mp.X - PlayerText.Width / 2;
+            //PiayerText.Top = mp.Y - PlayerText.Height / 2;
 
 
         }
