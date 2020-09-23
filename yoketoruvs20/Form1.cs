@@ -56,7 +56,7 @@ namespace yoketoruvs20
         {
             InitializeComponent();
 
-            for(int i=0; i < ChrMax; i++)
+            for(int i=0; i < EnemyMax; i++)
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
@@ -112,9 +112,8 @@ namespace yoketoruvs20
             int vx = rand.Next(-SpeedMax, SpeedMax);
             int vy = rand.Next(-SpeedMax, SpeedMax);
 
-            for (int i = 0; i < ChrMax; i++)
+            for (int i = 0; i < EnemyMax; i++)
             {
-                //timer1.Enabled = false;
 
                 chrs[i].Left += vx;
                 chrs[i].Top += vy;
