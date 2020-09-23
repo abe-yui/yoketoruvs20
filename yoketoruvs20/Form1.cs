@@ -34,6 +34,10 @@ namespace yoketoruvs20
         const string EnemyText = "♦";
         const string ItemText = "★";
 
+
+        const int SpeedMax = 10;
+
+
         static Random rand = new Random();
         
 
@@ -99,10 +103,58 @@ namespace yoketoruvs20
 
         void UpdateGame()
         {
+
             Point mp = PointToClient(MousePosition);
             //PlayerText.Left = mp.X - PlayerText.Width / 2;
-            //PiayerText.Top = mp.Y - PlayerText.Height / 2;
+            //PlayerText.Top = mp.Y - PlayerText.Height / 2;
 
+
+            int vx = rand.Next(-SpeedMax, SpeedMax);
+            int vy = rand.Next(-SpeedMax, SpeedMax);
+
+            /*EnemyText += vx;
+            EnemyText += vy;
+
+            ItemText += vx;
+            ItemText += vy;
+
+
+
+
+            if (sar[0].Left < 0)
+            {
+                vx = Math.Abs(vx);
+            }
+            if (EnemyText.Top < 0)
+            {
+                vy = Math.Abs(vy);
+            }
+            if (EnemyText.Right > ClientSize.Width)
+            {
+                vx = -Math.Abs(vx);
+            }
+            if (EnemyText.Bottom > ClientSize.Height)
+            {
+                vy = -Math.Abs(vy);
+            }
+
+
+            if (ItemText.Left < 0)
+            {
+                vx = Math.Abs(vx);
+            }
+            if (ItemText.Top< 0)
+            {
+                vy = Math.Abs(vy);
+            }
+            if (ItemText.Right > ClientSize.Width)
+            {
+                vx = -Math.Abs(vx);
+            }
+            if (ItemText.Bottom > ClientSize.Height)
+            {
+                vy = -Math.Abs(vy);
+            }*/
 
         }
 
