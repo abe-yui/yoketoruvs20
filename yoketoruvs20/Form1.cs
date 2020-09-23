@@ -105,56 +105,37 @@ namespace yoketoruvs20
         {
 
             Point mp = PointToClient(MousePosition);
-            //PlayerText.Left = mp.X - PlayerText.Width / 2;
+            //PlayerText.Left= mp.X - PlayerText.Width / 2;
             //PlayerText.Top = mp.Y - PlayerText.Height / 2;
 
 
             int vx = rand.Next(-SpeedMax, SpeedMax);
             int vy = rand.Next(-SpeedMax, SpeedMax);
 
-            /*EnemyText += vx;
-            EnemyText += vy;
+            for (int i = 0; i < ChrMax; i++)
+            {
+                //timer1.Enabled = false;
 
-            ItemText += vx;
-            ItemText += vy;
+                chrs[i].Left += vx;
+                chrs[i].Top += vy;
 
-
-
-
-            if (sar[0].Left < 0)
-            {
-                vx = Math.Abs(vx);
+                if (chrs[i].Left < 0)
+                {
+                    vx = Math.Abs(vx);
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy = Math.Abs(vy);
+                }
+                if (chrs[i].Right > ClientSize.Width)
+                {
+                    vx = -Math.Abs(vx);
+                }
+                if (chrs[i].Bottom > ClientSize.Height)
+                {
+                    vy = -Math.Abs(vy);
+                }
             }
-            if (EnemyText.Top < 0)
-            {
-                vy = Math.Abs(vy);
-            }
-            if (EnemyText.Right > ClientSize.Width)
-            {
-                vx = -Math.Abs(vx);
-            }
-            if (EnemyText.Bottom > ClientSize.Height)
-            {
-                vy = -Math.Abs(vy);
-            }
-
-
-            if (ItemText.Left < 0)
-            {
-                vx = Math.Abs(vx);
-            }
-            if (ItemText.Top< 0)
-            {
-                vy = Math.Abs(vy);
-            }
-            if (ItemText.Right > ClientSize.Width)
-            {
-                vx = -Math.Abs(vx);
-            }
-            if (ItemText.Bottom > ClientSize.Height)
-            {
-                vy = -Math.Abs(vy);
-            }*/
 
         }
 
