@@ -48,6 +48,10 @@ namespace yoketoruvs20
         State currentState = State.None;
         State nextState = State.Title;
 
+        const int SpeedMax = 20;
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+
         public Form1()
         {
             InitializeComponent();
@@ -100,8 +104,8 @@ namespace yoketoruvs20
         void UpdateGame()
         {
             Point mp = PointToClient(MousePosition);
-            //PlayerText.Left = mp.X - PlayerText.Width / 2;
-            //PiayerText.Top = mp.Y - PlayerText.Height / 2;
+            //chrs[0].Text.Left = mp.X - chrs[0].Text.Width / 2;
+            //chrs[0].Text.Top = mp.Y - chrs[0].Text.Height / 2;
 
 
         }
