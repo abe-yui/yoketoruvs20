@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 
 namespace yoketoruvs20
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form        
     {
 
         const bool isDebug = true;
-
+        
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
@@ -36,10 +36,13 @@ namespace yoketoruvs20
 
 
         const int SpeedMax = 10;
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+       
 
 
         static Random rand = new Random();
-
+        
 
         enum State
         {
@@ -52,15 +55,11 @@ namespace yoketoruvs20
         State currentState = State.None;
         State nextState = State.Title;
 
-        const int SpeedMax = 20;
-        int[] vx = new int[ChrMax];
-        int[] vy = new int[ChrMax];
-
         public Form1()
         {
             InitializeComponent();
 
-            for(int i=0; i < EnemyMax; i++)
+            for(int i=0; i < ChrMax; i++)
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
@@ -76,6 +75,7 @@ namespace yoketoruvs20
                 {
                     chrs[i].Text = ItemText;
                 }
+                chrs[i].Font = tempLabel.Font;
                 Controls.Add(chrs[i]);
             }
         }
@@ -109,34 +109,63 @@ namespace yoketoruvs20
         {
 
             Point mp = PointToClient(MousePosition);
-            //PlayerText.Left= mp.X - PlayerText.Width / 2;
-            //PlayerText.Top = mp.Y - PlayerText.Height / 2;
+            chrs[PlayerIndex].Left= mp.X - chrs[PlayerIndex].Width / 2;
+            chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
 
 
-            int vx = rand.Next(-SpeedMax, SpeedMax);
-            int vy = rand.Next(-SpeedMax, SpeedMax);
+            for (int ei = 1; ei < ChrMax; ei++)
+            {               
 
-            for (int i = 0; i < EnemyMax; i++)
-            {
+                chrs[ei].Left += vx[ei];
+                chrs[ei].Top += vy[ei];
 
-                chrs[i].Left += vx;
-                chrs[i].Top += vy;
-
-                if (chrs[i].Left < 0)
+                if (chrs[ei].Left < 0)
                 {
-                    vx = Math.Abs(vx);
+                    vx[ei] = Math.Abs(vx[ei]);
                 }
-                if (chrs[i].Top < 0)
+                if (chrs[ei].Top < 0)
                 {
-                    vy = Math.Abs(vy);
+                    vy[ei] = Math.Abs(vy[ei]);
                 }
-                if (chrs[i].Right > ClientSize.Width)
+                if (chrs[ei].Right > ClientSize.Width)
                 {
-                    vx = -Math.Abs(vx);
+                    vx[ei] = -Math.Abs(vx[ei]);
                 }
-                if (chrs[i].Bottom > ClientSize.Height)
+                if (chrs[ei].Bottom > ClientSize.Height)
                 {
-                    vy = -Math.Abs(vy);
+                    vy[ei] = -Math.Abs(vy[ei]);
+                }
+
+                if ((mp.X >= chrs[ei].Left)
+                    && (mp.X < chrs[ei].Right)
+                    && (mp.Y >= chrs[ei].Top)
+                    && (mp.Y < chrs[ei].Bottom))
+                {
+                    //MessageBox.Show("重なった！！");
+
+                    //敵か？
+                    if (ei < ItemIndex)
+                    {
+                        nextState = State.GameOver;
+                    }
+                    else
+                    {
+                        //アイテム
+                        chrs[ei].Visible = false;
+
+                        //for (int itemCount = 10; itemCount >=0; itemCount--)
+                        int itemCount = 10;
+                        itemCount = itemCount - 1;
+                        
+                            itemLabel.Text = "★:" + itemCount;
+
+                            if (itemCount <= 0)
+                            {
+                                nextState = State.Clear;
+                            }
+                        
+                        
+                    }
                 }
             }
 
@@ -164,12 +193,16 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyrightLabel.Visible = false;
                     hiLabel.Visible = false;
-
+                    
 
                     for(int i=EnemyIndex;i<ChrMax;i++)
                     {
+
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                        vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
+                        itemLabel.Text = "★:10";
                     }
 
                     break;
