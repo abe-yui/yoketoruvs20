@@ -12,11 +12,11 @@ using System.Runtime.InteropServices;
 
 namespace yoketoruvs20
 {
-    public partial class Form1 : Form        
+    public partial class Form1 : Form
     {
 
         const bool isDebug = true;
-        
+
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
 
@@ -34,8 +34,12 @@ namespace yoketoruvs20
         const string EnemyText = "♦";
         const string ItemText = "★";
 
+
+        const int SpeedMax = 10;
+
+
         static Random rand = new Random();
-        
+
 
         enum State
         {
@@ -56,7 +60,7 @@ namespace yoketoruvs20
         {
             InitializeComponent();
 
-            for(int i=0; i < ChrMax; i++)
+            for(int i=0; i < EnemyMax; i++)
             {
                 chrs[i] = new Label();
                 chrs[i].AutoSize = true;
@@ -103,10 +107,38 @@ namespace yoketoruvs20
 
         void UpdateGame()
         {
-            Point mp = PointToClient(MousePosition);
-            //chrs[0].Text.Left = mp.X - chrs[0].Text.Width / 2;
-            //chrs[0].Text.Top = mp.Y - chrs[0].Text.Height / 2;
 
+            Point mp = PointToClient(MousePosition);
+            //PlayerText.Left= mp.X - PlayerText.Width / 2;
+            //PlayerText.Top = mp.Y - PlayerText.Height / 2;
+
+
+            int vx = rand.Next(-SpeedMax, SpeedMax);
+            int vy = rand.Next(-SpeedMax, SpeedMax);
+
+            for (int i = 0; i < EnemyMax; i++)
+            {
+
+                chrs[i].Left += vx;
+                chrs[i].Top += vy;
+
+                if (chrs[i].Left < 0)
+                {
+                    vx = Math.Abs(vx);
+                }
+                if (chrs[i].Top < 0)
+                {
+                    vy = Math.Abs(vy);
+                }
+                if (chrs[i].Right > ClientSize.Width)
+                {
+                    vx = -Math.Abs(vx);
+                }
+                if (chrs[i].Bottom > ClientSize.Height)
+                {
+                    vy = -Math.Abs(vy);
+                }
+            }
 
         }
 
@@ -132,7 +164,7 @@ namespace yoketoruvs20
                     startButton.Visible = false;
                     copyrightLabel.Visible = false;
                     hiLabel.Visible = false;
-                    
+
 
                     for(int i=EnemyIndex;i<ChrMax;i++)
                     {
