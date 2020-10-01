@@ -38,7 +38,8 @@ namespace yoketoruvs20
         const int SpeedMax = 10;
         int[] vx = new int[ChrMax];
         int[] vy = new int[ChrMax];
-       
+
+        int itemCount = 10;
 
 
         static Random rand = new Random();
@@ -113,6 +114,12 @@ namespace yoketoruvs20
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
 
 
+            //int itemCount = 10;
+            //int timeCount = 100;
+
+            //timeCount--;
+            //timeLabel.Text = "Time " + timeCount;
+
             for (int ei = 1; ei < ChrMax; ei++)
             {               
 
@@ -151,20 +158,25 @@ namespace yoketoruvs20
                     else
                     {
                         //アイテム
+                        //chrs[ei].Visible = false;
+
                         chrs[ei].Visible = false;
-
-                        //for (int itemCount = 10; itemCount >=0; itemCount--)
-                        int itemCount = 10;
-                        itemCount = itemCount - 1;
                         
+
+                        if (itemCount > 0)
+                        {
+                            itemCount = itemCount - 1;
                             itemLabel.Text = "★:" + itemCount;
+                        }
+                        if (itemCount == 0)
+                        {
+                            nextState = State.Clear;
+                        }
 
-                            if (itemCount <= 0)
-                            {
-                                nextState = State.Clear;
-                            }
-                        
-                        
+
+
+
+
                     }
                 }
             }
