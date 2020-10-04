@@ -39,8 +39,10 @@ namespace yoketoruvs20
         int[] vx = new int[ChrMax];
         int[] vy = new int[ChrMax];
 
-        int itemCount = 10;
 
+        int itemCount = 10;
+        int timeCount = 100;
+        int hi = 0;
 
         static Random rand = new Random();
         
@@ -114,11 +116,14 @@ namespace yoketoruvs20
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
 
 
-            //int itemCount = 10;
-            //int timeCount = 100;
-
-            //timeCount--;
-            //timeLabel.Text = "Time " + timeCount;
+            
+          
+            timeCount--;
+            timeLabel.Text = "Time " + timeCount;
+            if(timeCount==0)
+            {
+                nextState = State.GameOver;
+            }
 
             for (int ei = 1; ei < ChrMax; ei++)
             {               
@@ -160,23 +165,23 @@ namespace yoketoruvs20
                         //アイテム
                         //chrs[ei].Visible = false;
 
-                        chrs[ei].Visible = false;
-                        
 
-                        if (itemCount > 0)
+                        chrs[ei].Visible = false;
+                        if (itemCount>0)
                         {
-                            itemCount = itemCount - 1;
+                            itemCount=itemCount-1;
                             itemLabel.Text = "★:" + itemCount;
                         }
-                        if (itemCount == 0)
+                        else if (itemCount == 0)
                         {
+                            if (timeCount > hi)
+                            {
+                                hi = timeCount;
+                                hiLabel.Text = "HighScore " + hi;
+                            }
+                            //hiLabel.Text = "HighScore " + timeCount;
                             nextState = State.Clear;
                         }
-
-
-
-
-
                     }
                 }
             }
@@ -214,7 +219,8 @@ namespace yoketoruvs20
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
-                        itemLabel.Text = "★:10";
+                        itemLabel.Text = "★:"+ ItemMax;
+                        timeLabel.Text = "Time " + timeCount;
                     }
 
                     break;
