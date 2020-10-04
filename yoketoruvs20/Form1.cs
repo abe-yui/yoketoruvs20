@@ -179,7 +179,6 @@ namespace yoketoruvs20
                                 hi = timeCount;
                                 hiLabel.Text = "HighScore " + hi;
                             }
-                            //hiLabel.Text = "HighScore " + timeCount;
                             nextState = State.Clear;
                         }
                     }
