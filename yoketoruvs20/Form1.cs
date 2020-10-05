@@ -42,7 +42,8 @@ namespace yoketoruvs20
 
         int itemCount = 10;
         int timeCount = 100;
-        int hi = 0;
+        //const int time = 100;
+        
 
         static Random rand = new Random();
         
@@ -117,13 +118,14 @@ namespace yoketoruvs20
 
 
             
-          
+            
             timeCount--;
             timeLabel.Text = "Time " + timeCount;
             if(timeCount==0)
             {
                 nextState = State.GameOver;
             }
+
 
             for (int ei = 1; ei < ChrMax; ei++)
             {               
@@ -167,6 +169,9 @@ namespace yoketoruvs20
 
 
                         chrs[ei].Visible = false;
+
+                        int hi = 0;
+
                         if (itemCount>0)
                         {
                             itemCount=itemCount-1;
