@@ -42,7 +42,8 @@ namespace yoketoruvs20
 
         int itemCount = 10;
         int timeCount = 100;
-        int hi = 0;
+        //const int time = 100;
+        
 
         static Random rand = new Random();
         
@@ -117,13 +118,14 @@ namespace yoketoruvs20
 
 
             
-          
+            
             timeCount--;
             timeLabel.Text = "Time " + timeCount;
             if(timeCount==0)
             {
                 nextState = State.GameOver;
             }
+
 
             for (int ei = 1; ei < ChrMax; ei++)
             {               
@@ -167,9 +169,15 @@ namespace yoketoruvs20
 
 
                         chrs[ei].Visible = false;
+
+<<<<<<< HEAD
+=======
+                        int hi = 0;
+
+>>>>>>> de2140a516d23e02ef9a83ef68bba3ae0eef2c3b
                         if (itemCount>0)
                         {
-                            itemCount=itemCount-1;
+                            itemCount-=1;
                             itemLabel.Text = "★:" + itemCount;
                         }
                         else if (itemCount == 0)
@@ -218,7 +226,15 @@ namespace yoketoruvs20
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
                         vy[i] = rand.Next(-SpeedMax, SpeedMax + 1);
-                        itemLabel.Text = "★:"+ ItemMax;
+                        
+                    }
+
+                    if (itemCount < 11)
+                    {
+                        itemLabel.Text = "★:" + ItemMax;
+                    }
+                    if (timeCount < 101)
+                    {
                         timeLabel.Text = "Time " + timeCount;
                     }
 
@@ -245,6 +261,7 @@ namespace yoketoruvs20
         private void titleButton_Click(object sender, EventArgs e)
         {
             nextState = State.Title;
+
         }
     }
 }
