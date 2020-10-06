@@ -171,6 +171,11 @@ namespace yoketoruvs20
                         chrs[ei].Visible = false;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+                        int hi = 0;
+
+>>>>>>> de2140a516d23e02ef9a83ef68bba3ae0eef2c3b
 =======
                         int hi = 0;
 
