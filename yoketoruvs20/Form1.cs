@@ -42,7 +42,8 @@ namespace yoketoruvs20
 
         int itemCount = 10;
         int timeCount = 100;
-        //const int time = 100;
+       
+        int hi = 0;
         
 
         static Random rand = new Random();
@@ -111,16 +112,19 @@ namespace yoketoruvs20
 
         void UpdateGame()
         {
+            
 
             Point mp = PointToClient(MousePosition);
             chrs[PlayerIndex].Left= mp.X - chrs[PlayerIndex].Width / 2;
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
 
 
+            //int timeCount = 100;
+
             
-            
-            timeCount--;
-            timeLabel.Text = "Time " + timeCount;
+                timeCount--;
+                timeLabel.Text = "Time " + timeCount;
+           
             if(timeCount==0)
             {
                 nextState = State.GameOver;
@@ -170,16 +174,9 @@ namespace yoketoruvs20
 
                         chrs[ei].Visible = false;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-                        int hi = 0;
+                        
 
->>>>>>> de2140a516d23e02ef9a83ef68bba3ae0eef2c3b
-=======
-                        int hi = 0;
 
->>>>>>> de2140a516d23e02ef9a83ef68bba3ae0eef2c3b
                         if (itemCount>0)
                         {
                             itemCount-=1;
@@ -224,7 +221,7 @@ namespace yoketoruvs20
                     hiLabel.Visible = false;
                     
 
-                    for(int i=EnemyIndex;i<ChrMax;i++)
+                    for (int i=EnemyIndex;i<ChrMax;i++)
                     {
 
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
@@ -234,14 +231,13 @@ namespace yoketoruvs20
                         
                     }
 
-                    if (itemCount < 11)
-                    {
-                        itemLabel.Text = "★:" + ItemMax;
-                    }
-                    if (timeCount < 101)
-                    {
-                        timeLabel.Text = "Time " + timeCount;
-                    }
+                    itemCount = 10;
+                    itemLabel.Text = "★:" + itemCount;
+
+                    timeCount = 100;
+                    timeLabel.Text = "Time " + timeCount;
+
+
 
                     break;
 
