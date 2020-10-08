@@ -119,8 +119,7 @@ namespace yoketoruvs20
             chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
 
 
-            //int timeCount = 100;
-
+            
             
                 timeCount--;
                 timeLabel.Text = "Time " + timeCount;
@@ -169,9 +168,6 @@ namespace yoketoruvs20
                     else
                     {
                         //アイテム
-                        //chrs[ei].Visible = false;
-
-
                         chrs[ei].Visible = false;
                         
                         
@@ -223,7 +219,7 @@ namespace yoketoruvs20
 
                     for (int i=EnemyIndex;i<ChrMax;i++)
                     {
-
+                        chrs[i].Visible = true;
                         chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
                         chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
                         vx[i] = rand.Next(-SpeedMax, SpeedMax + 1);
