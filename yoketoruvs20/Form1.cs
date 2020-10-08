@@ -184,10 +184,7 @@ namespace yoketoruvs20
 
                         if (itemCount == 0)
                         {
-                            if (timeCount > hi)
-                            {
-                                hi = timeCount;
-                            }
+                            
                             nextState = State.Clear;
                         }
                     }
@@ -251,6 +248,10 @@ namespace yoketoruvs20
                     titleButton.Visible = true;
                     hiLabel.Visible = true;
 
+                    if (timeCount > hi)
+                    {
+                        hi = timeCount;
+                    }
                     hiLabel.Text = "HighScore " + hi;
 
                     break;
