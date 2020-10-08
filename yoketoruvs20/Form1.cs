@@ -41,7 +41,7 @@ namespace yoketoruvs20
 
 
         int itemCount = ItemMax;
-        int timeCount = 100;
+        int timeCount = 101;
        
         int hi = 0;
         
@@ -183,8 +183,7 @@ namespace yoketoruvs20
 
 
                         if (itemCount == 0)
-                        {
-                            
+                        {     
                             nextState = State.Clear;
                         }
                     }
@@ -230,10 +229,11 @@ namespace yoketoruvs20
                     itemCount = ItemMax;
                     itemLabel.Text = "★:" + itemCount;
 
-                    timeCount = 100;
+                    timeCount = 101;                            
                     timeLabel.Text = "Time " + timeCount;
 
-                    
+                    //Visualstudioの性質で開始時で100をカウントし、
+                    //99から表示されてしまうことを防ぐために101
 
 
                     break;
@@ -247,6 +247,7 @@ namespace yoketoruvs20
                     clearLabel.Visible = true;
                     titleButton.Visible = true;
                     hiLabel.Visible = true;
+
 
                     if (timeCount > hi)
                     {
