@@ -173,7 +173,7 @@ namespace yoketoruvs20
 
 
                         chrs[ei].Visible = false;
-
+                        
                         
 
 
