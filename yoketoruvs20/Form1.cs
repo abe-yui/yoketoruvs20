@@ -40,7 +40,7 @@ namespace yoketoruvs20
         int[] vy = new int[ChrMax];
 
 
-        int itemCount = 10;
+        int itemCount = ItemMax;
         int timeCount = 100;
        
         int hi = 0;
@@ -168,22 +168,25 @@ namespace yoketoruvs20
                     else
                     {
                         //アイテム
-                        chrs[ei].Visible = false;
-                        
-                        
+                        //chrs[ei].Visible = false;
 
-
-                        if (itemCount>0)
+                        if (chrs[ei].Visible)
                         {
-                            itemCount-=1;
-                            itemLabel.Text = "★:" + itemCount;
+
+                            if (itemCount > 0)
+                            {
+                                itemCount -= 1;
+                                itemLabel.Text = "★:" + itemCount;
+                            }
                         }
-                        else if (itemCount == 0)
+                        chrs[ei].Visible = false;
+
+
+                        if (itemCount == 0)
                         {
                             if (timeCount > hi)
                             {
                                 hi = timeCount;
-                                hiLabel.Text = "HighScore " + hi;
                             }
                             nextState = State.Clear;
                         }
@@ -227,12 +230,13 @@ namespace yoketoruvs20
                         
                     }
 
-                    itemCount = 10;
+                    itemCount = ItemMax;
                     itemLabel.Text = "★:" + itemCount;
 
                     timeCount = 100;
                     timeLabel.Text = "Time " + timeCount;
 
+                    
 
 
                     break;
@@ -246,6 +250,9 @@ namespace yoketoruvs20
                     clearLabel.Visible = true;
                     titleButton.Visible = true;
                     hiLabel.Visible = true;
+
+                    hiLabel.Text = "HighScore " + hi;
+
                     break;
             }
         }
